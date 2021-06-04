@@ -14,7 +14,7 @@
 #include "Member.h"
 #include "EmulNet.h"
 #include "Queue.h"
-#include <unordered_map>
+
 /**
  * Macros
  */
@@ -31,7 +31,6 @@
 enum MsgTypes{
     JOINREQ,
     JOINREP,
-    DUMMYLASTMSGTYPE,
 	PING
 };
 
@@ -42,8 +41,8 @@ enum MsgTypes{
  */
 typedef struct MessageHdr {
 	enum MsgTypes msgType;
-	Address to;
-	Address from;
+	vector< MemberListEntry> memberList;
+	Address* addr;
 }MessageHdr;
 
 /**
@@ -58,8 +57,6 @@ private:
 	Params *par;
 	Member *memberNode;
 	char NULLADDR[6];
-	unordered_map<int, int> memberTable;
-	int time;
 
 public:
 	MP1Node(Member *, Params *, EmulNet *, Log *, Address *);
@@ -81,9 +78,13 @@ public:
 	void initMemberListTable(Member *memberNode);
 	void printAddress(Address *addr);
 	virtual ~MP1Node();
-	bool sendMessage(MessageHdr *msg, Address* to);
-	bool addToMemberList(MessageHdr *msg);
-	void updateMemberList(MessageHdr *msg);
+	void updateMemberList( MessageHdr* msg);
+	void updateMemberList(MemberListEntry* e);
+	MemberListEntry* getMemberIfPresent( int id, short port);
+	void sendMessage(Address* toaddr, MsgTypes t);
+	void handlePing(MessageHdr* msg);
+	void update_src_member(MessageHdr* msg);
+	Address* createAddress(int id, short port);
 };
 
 #endif /* _MP1NODE_H_ */
