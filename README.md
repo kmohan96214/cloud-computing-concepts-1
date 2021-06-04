@@ -32,8 +32,8 @@ typedef struct MessageHdr {
 	* Multiple node failure
 	* Single node failure under a lossy network.
 ```
-	$ chmod +x GraderNew.sh
-	$ ./GraderNew.sh
+	$ chmod +x Grader.sh
+	$ ./Grader.sh
 ```
 # Result
 *	Points achieved: 90 out of 90 [100%]
