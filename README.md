@@ -18,9 +18,9 @@ typedef struct MessageHdr {
 }MessageHdr;
 ```
 *	Principle of **Gossip Protocol** :
-[reference](https://github.com/kmohan96214/cloud-computing-concepts-1/blob/main/gossip.jpg)
+[reference](https://github.com/kmohan96214/cloud-computing-concepts-1/blob/main/GossipStyleDetection.pdf)
 
-![image](https://github.com/kmohan96214/cloud-computing-concepts-1/blob/main/gossip.jpg)
+![image](https://github.com/kmohan96214/cloud-computing-concepts-1/blob/main/gossip.png)
 
 	
 
